@@ -68,7 +68,8 @@ Developers:
  Copyright (c) 2012, SuMo: the smart public cloud monitoring tool
 
  SuMo team: P. Kokkinos, A. Kretsis, P. Soumplis 
- contact email: kokkinop@gmail.com
+
+ Contact email: kokkinop@gmail.com
 
  Permission is hereby granted, free of charge, to any person obtaining
  a copy of this software and associated documentation files (the
