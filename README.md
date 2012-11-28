@@ -43,7 +43,9 @@ Required packages:
 Install from source:
 
 $ git clone https://github.com/sumo-tool/sumo.git
+
 $ cd sumo
+
 $ python setup.py install
 
 
