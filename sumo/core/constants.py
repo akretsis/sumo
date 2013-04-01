@@ -84,6 +84,7 @@ INSTNACES_RESERVED_MEDIUM_UTILIZATION_LINUX_URL = "http://aws.amazon.com/ec2/pri
 INSTANCES_RESERVED_MEDIUM_UTILIZATION_WINDOWS_URL = "http://aws.amazon.com/ec2/pricing/ri-medium-mswin.json"
 INSTANCES_RESERVED_HEAVY_UTILIZATION_LINUX_URL = "http://aws.amazon.com/ec2/pricing/ri-heavy-linux.json"
 INSTANCES_RESERVED_HEAVY_UTILIZATION_WINDOWS_URL = "http://aws.amazon.com/ec2/pricing/ri-heavy-mswin.json"
+STORAGE_S3_URL = "http://aws.amazon.com/s3/pricing/pricing-storage.json"
 
 INSTANCES_ON_DEMAND_FILENAME = "data/json/pricing-on-demand-instances.json"
 INSTANCES_RESERVED_LIGHT_UTILIZATION_LINUX_FILENAME = "data/json/ri-light-linux.json"
@@ -93,6 +94,8 @@ INSTANCES_RESERVED_MEDIUM_UTILIZATION_WINDOWS_FILENAME = "data/json/ri-medium-ms
 INSTANCES_RESERVED_HEAVY_UTILIZATION_LINUX_FILENAME = "data/json/ri-heavy-linux.json"
 INSTANCES_RESERVED_HEAVY_UTILIZATION_WINDOWS_FILENAME = "data/json/ri-heavy-mswin.json"
 INSTANCES_CAPACITY_FILENAME = "data/json/ec2-instances-capacity.json"
+STORAGE_S3_FILENAME = "data/json/pricing-storage.json"
+
 
 INSTANCES_RESERVED_OS_TYPE_BY_URL = {
 	INSTANCES_RESERVED_LIGHT_UTILIZATION_LINUX_URL : "linux",

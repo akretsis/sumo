@@ -59,3 +59,24 @@ def get_instance_id(instances):
 		ids.append(inst["id"])
 	
 	return ids
+
+
+def create_os_vectors():
+
+	os_windows=[]
+	os_linux=[]
+
+	for ins_type in EC2_INSTANCE_TYPES:
+		for region in EC2_REGIONS:
+			for os in EC2_OS_TYPES:
+				if os=="linux":
+					os_windows.append(0)
+					os_linux.append(1)
+				else:
+					os_windows.append(1)
+					os_linux.append(0)
+
+	return os_windows,os_linux
+
+
+

@@ -1,5 +1,19 @@
 
 
+Version 1.1.0
+
+Release date: 03/2013
+
+Description: 
+
++ New methods to cloudData and cloudKeeping modules
++ Add pattern detection based on cross-correlation (cloudForce) 
++ Add spark or spike detection based on return (cloudForce)
++ Minor fixes
+
+
+===================================================
+
 Version 1.0.0
 
 Release date: 27/11/2012

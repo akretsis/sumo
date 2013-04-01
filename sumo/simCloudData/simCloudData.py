@@ -189,3 +189,5 @@ def get_random_instance_states(number, percent_array):
 		init_states.pop(index)
 
 	return states 
+
+
