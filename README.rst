@@ -6,8 +6,8 @@ Contents
 * Introduction
 * Installation
 
-   * Requirements
-   * Manual Installation
+  * Requirements
+  * Manual Installation
 
 * Examples
 * Developers
