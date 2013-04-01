@@ -6,8 +6,8 @@ Contents
 1. Introduction
 
 2. Installation
-   2.1 Requirements
-   2.2 Manual Installation
+2.1 Requirements
+2.2 Manual Installation
 
 3. Examples
 
@@ -16,15 +16,15 @@ Contents
 5. License
 
 
-1: Introduction
+1 - Introduction
 ------------------
 
 SuMo is a tool for smart public cloud monitoring and analysis
 
-2: Installation
+2 - Installation
 ------------------
 
-2.1: Requirements 
+2.1 - Requirements 
 -------------------
 
 Required packages:
@@ -39,7 +39,7 @@ Required packages:
 - cplex
 
 
-2.2: Manual Installation
+2.2 - Manual Installation
 --------------------------
 
 Install from source:
@@ -51,11 +51,11 @@ Install from source:
 	$ python setup.py install
 
 
-3: Examples
+3 - Examples
 ------------
 
 
-4: Developers 
+4 - Developers 
 ---------------
 
 Developers:
@@ -65,7 +65,7 @@ Developers:
 - Soumplis Polyzois
 
 
-5: License 
+5 - License 
 ------------
 
 See LICENSE file
