@@ -5,8 +5,10 @@ Contents
 
 * 1. Introduction
 * 2. Installation
+
 	*2.1 Requirements
 	*2.2 Manual Installation
+
 *3. Examples
 *4. Developers
 *5. License
