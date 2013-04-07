@@ -31,16 +31,13 @@ from sumo.core.keys import *
 
 
 
-
 def connect_to_aws_ec2(region = None):
 	"""Connect to AWS EC2
 
 		:param region: The region to use.
 		:type region: str.
-		:param state: Current state to be in.
-		:type state: bool.
 		:returns:  int -- the return code.
-		:raises: AttributeError, KeyError
+		:returns: EC2Connection -- a connection to the given region or to any region if no region is specified.	
 
 	"""
 
@@ -53,11 +50,18 @@ def connect_to_aws_ec2(region = None):
 
 
 
-#######################
-# Get running instances	based on the input EC2 connection
-#######################
 def get_ec2connection_instances(ec2_conn,defined_filters=None):
+
+	"""Get running instances based on the input EC2 connection
+	
+		:param ec2_conn: A EC2 connection to AWS object.
+		:type ec2_conn: EC2Connection.
+		:param defined_filters: Optional filters that can be used to limit the results returned (provided by boto). 
+		:type defined_filters: dict.
+		:returns: list -- a list of instances.		
 		
+	"""		
+
 	reservations = ec2_conn.get_all_instances(filters=defined_filters)
 	
 	instances = [i for r in reservations for i in r.instances]
@@ -104,11 +108,17 @@ def get_ec2connection_instances(ec2_conn,defined_filters=None):
 	return instances_list
 	
 
-#######################
-# Get instances from a specific region or else the default will be used
-#######################
+
 def get_regional_instances(region_name = ""):
 
+	"""Get instances from a specific region or else the default will be used.
+	
+		:param region: The region to use.
+		:type region: str.
+		:returns: list -- a list of instances for a specific (or the default) region.		
+		
+	"""
+	
 	if len(region_name) > 0:
 		region = boto.ec2.get_region(region_name,aws_access_key_id=AWS_ACCESS_KEY_ID,aws_secret_access_key=AWS_SECRET_ACCESS_KEY)
 	else:
@@ -119,11 +129,15 @@ def get_regional_instances(region_name = ""):
 
 	return instances
 	
-	
-#######################
-# Get all user's instances (from all regions)
-#######################
+
+
 def get_all_instances():
+
+	"""Get all user's instances (from all regions).
+	
+		:returns: list -- a list of instances.		
+		
+	"""
 
 	all_instances = []
 	
@@ -141,12 +155,27 @@ def get_all_instances():
 	return all_instances
 
 	
-#######################
-# A wrapper function for getting the values of a metric for an instance over a time period
-#######################
+
 def get_instance_metric(start, end, step_size, metric_name, instance_id, region_name="us-west-1"):
 
-
+	"""A wrapper function for getting the values of a metric for an instance over a time period.
+	
+		:param start: start time of observation.
+		:type start: datetime.
+		:param end: end time of observation.
+		:type end: datetime.
+		:param step_size: the length of each period
+		:type step_size: int.
+		:param metric_name: the metric's name.
+		:type metric_name: str
+		:param instance_id: the instance observerd id.
+		:type instance_id: int
+		:param region_name: the region's name.
+		:type region_name: str
+		:returns: datapoints -- datapoints of the metric values.		
+		
+	"""
+	
 	#Get RegionInfo object from region name	
 	cloudwatch_regions=boto.ec2.cloudwatch.regions()	
 	
@@ -178,10 +207,24 @@ def get_instance_metric(start, end, step_size, metric_name, instance_id, region_
 	return datapoints
 
 
-#######################
-# A wrapper function for getting the values of a metric for a set of instances instance over a time period
-#######################
+
 def get_all_instances_metric(start, end, step_size, metric_name, instances):
+
+	"""A wrapper function for getting the values of a metric for a set of instances instance over a time period.
+	
+		:param start: start time of observation.
+		:type start: datetime.
+		:param end: end time of observation.
+		:type end: datetime.
+		:param step_size: the length of each period
+		:type step_size: int.
+		:param metric_name: the metric's name.
+		:type metric_name: str
+		:param instance_id: list of instances.
+		:type instance_id: list.
+		:returns: datapoints -- datapoints of the metric values.		
+		
+	"""
 
 	metric_datapoints_array = list()
 	
@@ -192,10 +235,16 @@ def get_all_instances_metric(start, end, step_size, metric_name, instances):
 	return metric_datapoints_array
 
 
-#######################
-# Converts statistics datapoints to more easier handled signal
-#######################
+
 def datapoints_to_signal(metric_datapoints):
+
+	"""Converts statistics datapoints to more easier handled signal.
+	
+		:param metric_datapoints: datapoints of the metric values.
+		:type metric_datapoints: datapoints.
+		:returns: list -- a list containing all datapoint's data.
+		
+	"""
 	
 	metric_signal = list()
 
@@ -211,10 +260,18 @@ def datapoints_to_signal(metric_datapoints):
 	return metric_signal
 
 	
-#######################
-# Calculates an aggregated value of received signal
-#######################
+
 def aggregate_metric(metric_datapoints, operation='Average'):
+
+	"""Calculates an aggregated value of received signal.
+	
+		:param metric_datapoints: datapoints of the metric values.
+		:type metric_datapoints: datapoints.
+		:param operation: type of aggregation operation to performed.
+		:type operation: str.
+		:returns: float -- aggregated value.		
+		
+	"""
 
 	valid_operations = ['Average','Minimum','Maximum']
 	metric_values = []
@@ -242,12 +299,21 @@ def aggregate_metric(metric_datapoints, operation='Average'):
 
 
 
-#######################
-# Calcuates the workload of the given instances, assuming that the given array contains the EC2 utilization of these instance
-# for a particular time period and that an aggregator parameter is used
-#######################
 def get_instances_workload(instances, workload_datapoints_array, param = 'Average'):
 
+	"""Calculates the workload percentage of the given instances, assuming that the given array contains the EC2 utilization of these instance 
+		for a particular time period and that an aggregator parameter is used.
+		
+		:param instances: a list of instances.
+		:type instances: list.
+		:param workload_datapoints_array: a list of EC2 utilization datapoints for all input instances.
+		:type workload_datapoints_array: list.
+		:param param: type of aggregation operation to performed.
+		:type param: str.
+		:returns: list -- aggregated value.		
+		
+	"""
+	
 	workload = []
 	workload_percentage = []
         
@@ -262,10 +328,14 @@ def get_instances_workload(instances, workload_datapoints_array, param = 'Averag
 	return workload_percentage
 	
 
-#######################
-# Gets the capacity of each machine type (in EC2)
-#######################
+
 def get_capacity_per_machine_type():
+
+	"""Gets the capacity of each machine type (in EC2).
+	
+		:returns: dict -- the capacity of each machine type (in EC2).		
+		
+	"""
 
 	data = ec2_capacity.get_ec2_instances_capacity()
 
@@ -276,10 +346,16 @@ def get_capacity_per_machine_type():
 	return capacity
 
 
-#######################
-# Gets input instances' cost
-#######################
+
 def get_instances_cost(instances):
+
+	"""Gets input instances' cost.
+	
+		:param instances: a list of instance types.
+		:type instances: list.
+		:returns: list -- list of cost for each instance type.
+				
+	"""
 
 	cost = []
 	
@@ -290,10 +366,16 @@ def get_instances_cost(instances):
 	return cost
 
 
-#######################
-# Gets the capacity of each instance (and the corresponding machine type) (in EC2)
-#######################
+
 def get_instances_capacity(instances,filter=None):
+
+	"""Gets the capacity of each instance (and the corresponding machine type) (in EC2).
+	
+		:param instances: a list of instance types.
+		:type instances: list.
+		:returns: list -- list of cost for each instance type.		
+		
+	"""
 
 	capacity = []
 
@@ -306,18 +388,26 @@ def get_instances_capacity(instances,filter=None):
 	return capacity
 
 
-#######################
-# Gets the number of different instance types
-#######################
+
 def get_instance_types_count():
+
+	"""Gets the number of different instance types, considering type, os and region.
+	
+		:returns: int -- number of different instance types.
+		 	
+	"""
 
 	return len(EC2_INSTANCE_TYPES)*len(EC2_REGIONS)*len(EC2_OS_TYPES)
 
 
-#######################
-# Gets all instance types
-#######################
+
 def get_all_instance_types():
+
+	"""Gets information for all different instance types, including type, os and region.
+	
+		:returns: list -- list of all different instance types.
+		
+	"""
 
 	all_instance_type = []
 
@@ -329,10 +419,13 @@ def get_all_instance_types():
 	return all_instance_type
 
 
-#######################
-# Get all instance types costs
-#######################
+
 def get_instance_types_costs():
+
+	"""Get all instance types costs.
+	
+		:returns: list -- list of all different instance types's costs.
+	"""
 
 	all_combinations = []
 	cost = []
@@ -350,10 +443,14 @@ def get_instance_types_costs():
 	return cost	
 
 
-#######################
-# Get all instance types computational capacities
-#######################
+
 def get_instance_types_capacities():
+
+	"""Get all instance types computational capacities.
+	
+		:returns: list -- list of all different instance types's capacities.
+		
+	"""
 
 	capacity = []
 	
@@ -368,11 +465,15 @@ def get_instance_types_capacities():
 
 
 
-###################################################
-# Get all AMIs and their related information
-###################################################
-
 def get_all_amis(defined_filters=None):
+	
+	"""Get all AMIs and their related information.
+	
+		:param defined_filters: Optional filters that can be used to limit the results returned (provided by boto). 
+		:type defined_filters: dict.
+		:returns: list -- list of dictionaries, where each dictionary contains info for each AMI.
+		
+	"""
 	
 	all_amis = []
 	
@@ -416,11 +517,16 @@ def get_all_amis(defined_filters=None):
 	return all_amis
 
 	
-##################################################
-# Get all Elastic IP's (EC2 or VPC) 
-###################################################
 
 def get_all_elastic_ips(defined_filters=None):
+	
+	"""Get all Elastic IP's (EC2 or VPC).
+	 
+		:param defined_filters: Optional filters that can be used to limit the results returned (provided by boto). 
+		:type defined_filters: dict.
+		:returns: list -- list of dictionaries, where each dictionary contains info for each elastic IP.
+		
+	"""	
 	
 	all_elastic_ips = []
 	
@@ -460,11 +566,16 @@ def get_all_elastic_ips(defined_filters=None):
 	return all_elastic_ips
 
 
-##################################################
-# Get all Security Groups 
-###################################################
 
 def get_all_security_groups(defined_filters=None):
+	
+	"""Get all Security Groups.
+	 
+		:param defined_filters: Optional filters that can be used to limit the results returned (provided by boto). 
+		:type defined_filters: dict.
+		:returns: list -- list of dictionaries, where each dictionary contains info for each security group.
+		
+	"""
 	
 	all_security_groups = []
 	
@@ -498,12 +609,16 @@ def get_all_security_groups(defined_filters=None):
 
 	
 
-##################################################
-# Get all Key Pairs 
-###################################################
-
 def get_all_key_pairs(defined_filters=None):
-	
+
+	"""Get all Key Pairs.
+	 
+		:param defined_filters: Optional filters that can be used to limit the results returned (provided by boto). 
+		:type defined_filters: dict.
+		:returns: list -- list of dictionaries, where each dictionary contains info for each key pair.
+		
+	"""
+		
 	all_key_pairs = []
 	
 	# get all regions
@@ -529,10 +644,17 @@ def get_all_key_pairs(defined_filters=None):
 				
 	return all_key_pairs
 
-##################################################
-# Get all Bundle Tasks 
-###################################################
+
+
 def get_all_bundle_tasks(defined_filters=None):
+	
+	"""Get all Bundle Tasks. 
+	
+		:param defined_filters: Optional filters that can be used to limit the results returned (provided by boto). 
+		:type defined_filters: dict.
+		:returns: list -- list of dictionaries, where each dictionary contains info for each bundle task.
+		
+	"""
 	
 	all_bundle_tasks = []
 	
@@ -569,10 +691,14 @@ def get_all_bundle_tasks(defined_filters=None):
 	return all_bundle_tasks
 
 
-######
-#  Get volumes
-####
+
 def get_all_volumes(defined_filters=None):
+
+	"""Get volumes
+		:param defined_filters: Optional filters that can be used to limit the results returned (provided by boto). 
+		:type defined_filters: dict.
+		:returns: list -- list of dictionaries, where each dictionary contains info for each volume
+	"""
 
 	all_volumes = []
 	
@@ -603,10 +729,17 @@ def get_all_volumes(defined_filters=None):
 		    	
 	return all_volumes
 
-####
-#  Get Snapshots
-###
+
+
 def get_all_snapshots(defined_filters=None):
+
+	"""Get Snapshots.
+	
+		:param defined_filters: Optional filters that can be used to limit the results returned (provided by boto). 
+		:type defined_filters: dict.
+		:returns: list -- list of dictionaries, where each dictionary contains info for each snapshot.
+		
+	"""
 
 	all_snapshots = []
 	
@@ -639,11 +772,17 @@ def get_all_snapshots(defined_filters=None):
 	return all_snapshots
 
 
-####
-# Retrieve all the metadata tags from all regions
-####
+
 def get_all_tags(defined_filters=None):
 
+	"""Retrieve all the metadata tags from all regions.
+	
+		:param defined_filters: Optional filters that can be used to limit the results returned (provided by boto). 
+		:type defined_filters: dict.
+		:returns: list -- list of dictionaries, where each dictionary contains info for the metadata tags for each region.
+		
+	"""
+	
 	all_tags = []
 	
 	# get all regions
@@ -670,11 +809,17 @@ def get_all_tags(defined_filters=None):
 	return all_tags
 
 		
-#################################
-# Get all spot requests
-#################################
+
 def get_all_spot_instance_requests(defined_filters=None):
 
+	"""Get all spot requests.
+	
+		:param defined_filters: Optional filters that can be used to limit the results returned (provided by boto). 
+		:type defined_filters: dict.
+		:returns: list -- list of dictionaries, where each dictionary contains info for each spot request.
+		
+	"""
+	
 	all_spot_requests = []
 	
 	# get all regions
@@ -713,10 +858,15 @@ def get_all_spot_instance_requests(defined_filters=None):
 
 
 
-#################################
-# Get all spot instances
-#################################
 def get_all_spot_instances(defined_filters=None):
+
+	"""Get all spot instances.
+	
+		:param defined_filters: Optional filters that can be used to limit the results returned (provided by boto). 
+		:type defined_filters: dict.
+		:returns: list -- list of all spot instances.
+		
+	"""
 
 	all_spot_instances = []
 	
@@ -736,10 +886,15 @@ def get_all_spot_instances(defined_filters=None):
 
 
 
-#################################
-# Get all reserved instances
-#################################
 def get_all_reserved_instances(defined_filters=None):
+
+	"""Get all reserved instances.
+	
+		:param defined_filters: Optional filters that can be used to limit the results returned (provided by boto). 
+		:type defined_filters: dict.
+		:returns: list -- list of dictionaries, where each dictionary contains info for each reserved instance.
+		
+	"""
 
 	all_reserved_instances = []
 	
@@ -775,10 +930,14 @@ def get_all_reserved_instances(defined_filters=None):
 	return all_reserved_instances
 
 
-###
-#  Get all S3 buckets
-###
+
 def get_all_buckets():
+
+	"""Get all S3 buckets.
+	
+		:returns: list -- list of dictionaries, where each dictionary contains info for each S3 bucket.
+		
+	"""
 
 	all_s3_buckets = []	
 		
@@ -840,32 +999,38 @@ def get_all_buckets():
 	return all_s3_buckets
 
 
-###
-#  
-###
+
 def get_buckets_storage_pricing_info():
 
-    all_s3_buckets = []    
-        
-    conn = S3Connection(aws_access_key_id=AWS_ACCESS_KEY_ID, aws_secret_access_key=AWS_SECRET_ACCESS_KEY)
-    
-    s3_buckets = conn.get_all_buckets()
+	"""Returns for for each S3 bucket its name, its size (in MB) for each storage class and its region
+	
+		:returns: list -- list of dictionaries, where each dictionary contains pricing info for each S3 bucket
+	"""
+
+	all_s3_buckets = []    
+		     
+	conn = S3Connection(aws_access_key_id=AWS_ACCESS_KEY_ID, aws_secret_access_key=AWS_SECRET_ACCESS_KEY)
+		 
+	s3_buckets = conn.get_all_buckets()
                                         
-    for s3_bucket in s3_buckets:
+	for s3_bucket in s3_buckets:
             
-        bucket = {}
+		bucket = {}
         
-        storage_class_size_MB = { "STANDARD":0,"REDUCED_REDUNDANCY":0,"GLACIER":0 }
+		storage_class_size_MB = { "STANDARD":0,"REDUCED_REDUNDANCY":0,"GLACIER":0 }
         
-        contents = s3_bucket.list() 
+		contents = s3_bucket.list() 
                 
-        for content in contents:
-            storage_class_size_MB[content.storage_class] = storage_class_size_MB[content.storage_class] + content.size/(1024*1024) 
+		for content in contents:
+			storage_class_size_MB[content.storage_class] = storage_class_size_MB[content.storage_class] + content.size/(1024*1024) 
             
-        bucket['name'] = s3_bucket.name                
-        bucket['size_per_storage_class'] = storage_class_size_MB
-        bucket['region'] = s3_bucket.get_location()
+		bucket['name'] = s3_bucket.name                
+		bucket['size_per_storage_class'] = storage_class_size_MB
+		bucket['region'] = s3_bucket.get_location()
             
-        all_s3_buckets.append(bucket)
+		all_s3_buckets.append(bucket)
             
-    return all_s3_buckets
+	return all_s3_buckets
+    
+    
+    
