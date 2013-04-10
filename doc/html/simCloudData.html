@@ -1,0 +1,239 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>simCloudData : Create “simulated” instances &mdash; Sumo 1.0 documentation</title>
+    
+    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '',
+        VERSION:     '1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="Sumo 1.0 documentation" href="index.html" />
+    <link rel="prev" title="cloudForce : Analytic and Optimization Algorithms" href="cloudForce.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="cloudForce.html" title="cloudForce : Analytic and Optimization Algorithms"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">Sumo 1.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="simclouddata-create-simulated-instances">
+<h1>simCloudData : Create &#8220;simulated&#8221; instances<a class="headerlink" href="#simclouddata-create-simulated-instances" title="Permalink to this headline">¶</a></h1>
+<p>The simClouData module provides access to a set of functions for creating &#8220;simulated&#8221; (or synthetic) instances and the associated data (e.g utilization profile)</p>
+<div class="section" id="module-sumo.simCloudData.simCloudData">
+<span id="module-simclouddata"></span><h2>Module simCloudData<a class="headerlink" href="#module-sumo.simCloudData.simCloudData" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="sumo.simCloudData.simCloudData.get_instance_metric">
+<tt class="descclassname">sumo.simCloudData.simCloudData.</tt><tt class="descname">get_instance_metric</tt><big>(</big><em>start</em>, <em>end</em>, <em>step_size</em>, <em>metric_name</em>, <em>usage_category</em>, <em>instance_id</em><big>)</big><a class="headerlink" href="#sumo.simCloudData.simCloudData.get_instance_metric" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create non real aws instance statistics.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>start</strong> (<em>datetime.</em>) &#8211; start time of signal.</li>
+<li><strong>end</strong> (<em>datetime.</em>) &#8211; end time of signal.</li>
+<li><strong>metric</strong> (<em>string.</em>) &#8211; metric&#8217;s name.</li>
+<li><strong>usage_category</strong> (<em>int.</em>) &#8211; usage category as defined in constants.py</li>
+<li><strong>instance_id</strong> (<em>int.</em>) &#8211; instance&#8217;s id.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">list &#8211; a list of non real instances&#8217; data.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="sumo.simCloudData.simCloudData.get_instances">
+<tt class="descclassname">sumo.simCloudData.simCloudData.</tt><tt class="descname">get_instances</tt><big>(</big><em>instances_count</em><big>)</big><a class="headerlink" href="#sumo.simCloudData.simCloudData.get_instances" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create a number of non real instances&#8217; data: region, type, state, os, id.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>instances_count</strong> (<em>int.</em>) &#8211; Number of instances.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">list &#8211; a list of non real instances&#8217; data.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="sumo.simCloudData.simCloudData.get_random_instance_os_types">
+<tt class="descclassname">sumo.simCloudData.simCloudData.</tt><tt class="descname">get_random_instance_os_types</tt><big>(</big><em>number</em>, <em>percent_array</em><big>)</big><a class="headerlink" href="#sumo.simCloudData.simCloudData.get_random_instance_os_types" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a number of instances&#8217; with specific OS type percentages.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>number</strong> (<em>int.</em>) &#8211; number of instances.</li>
+<li><strong>percent_array</strong> (<em>list.</em>) &#8211; list of percentages of each OS type.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">list &#8211; a list of instances.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="sumo.simCloudData.simCloudData.get_random_instance_regions">
+<tt class="descclassname">sumo.simCloudData.simCloudData.</tt><tt class="descname">get_random_instance_regions</tt><big>(</big><em>number</em>, <em>percent_array</em><big>)</big><a class="headerlink" href="#sumo.simCloudData.simCloudData.get_random_instance_regions" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a number of instances&#8217; with specific region percentages.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>number</strong> (<em>int.</em>) &#8211; number of instances.</li>
+<li><strong>percent_array</strong> (<em>list.</em>) &#8211; list of percentages of each region.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">list &#8211; a list of instances.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="sumo.simCloudData.simCloudData.get_random_instance_states">
+<tt class="descclassname">sumo.simCloudData.simCloudData.</tt><tt class="descname">get_random_instance_states</tt><big>(</big><em>number</em>, <em>percent_array</em><big>)</big><a class="headerlink" href="#sumo.simCloudData.simCloudData.get_random_instance_states" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a number of instances&#8217; with specific instance state percentages.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>number</strong> (<em>int.</em>) &#8211; number of instances.</li>
+<li><strong>percent_array</strong> (<em>list.</em>) &#8211; list of percentages of each instance state.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">list &#8211; a list of instances.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="sumo.simCloudData.simCloudData.get_random_instance_types">
+<tt class="descclassname">sumo.simCloudData.simCloudData.</tt><tt class="descname">get_random_instance_types</tt><big>(</big><em>number</em>, <em>percent_array</em><big>)</big><a class="headerlink" href="#sumo.simCloudData.simCloudData.get_random_instance_types" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a number of instances&#8217; with specific instance type percentages.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>number</strong> (<em>int.</em>) &#8211; number of instances.</li>
+<li><strong>percent_array</strong> (<em>list.</em>) &#8211; list of percentages of each instance type.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">list &#8211; a list of instances.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">simCloudData : Create &#8220;simulated&#8221; instances</a><ul>
+<li><a class="reference internal" href="#module-sumo.simCloudData.simCloudData">Module simCloudData</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="cloudForce.html"
+                        title="previous chapter">cloudForce : Analytic and Optimization Algorithms</a></p>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="cloudForce.html" title="cloudForce : Analytic and Optimization Algorithms"
+             >previous</a> |</li>
+        <li><a href="index.html">Sumo 1.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2013, Aristotelis Kretsis,Panagiotis Kokkinos.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+    </div>
+  </body>
+</html>

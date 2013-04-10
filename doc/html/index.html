@@ -1,0 +1,149 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>SuMo: Smart Cloud Monitoring toolkit &mdash; Sumo 1.0 documentation</title>
+    
+    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '',
+        VERSION:     '1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="Sumo 1.0 documentation" href="#" />
+    <link rel="next" title="cloudData : Collecting Monitoring Data" href="cloudData.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="cloudData.html" title="cloudData : Collecting Monitoring Data"
+             accesskey="N">next</a> |</li>
+        <li><a href="#">Sumo 1.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="sumo-smart-cloud-monitoring-toolkit">
+<span id="index"></span><h1>SuMo: Smart Cloud Monitoring toolkit<a class="headerlink" href="#sumo-smart-cloud-monitoring-toolkit" title="Permalink to this headline">¶</a></h1>
+<p>Smart Cloud Monitoring toolkit, has been developed to contain the necessary mechanisms for collecting monitoring data
+from <a class="reference external" href="http://aws.amazon.com//">Amazon Web Services (AWS)</a> and analyzing them.</p>
+<p>SuMo makes easy for anyone, a researcher or an administrator, to monitor the owned instances, run the proposed mechanisms [] or implement new more intelligent ones. SuMo is open-source and available through github SuMo-tool: <a class="reference external" href="https://github.com/SuMo-tool">https://github.com/SuMo-tool</a>. To the best of our knowledge it is the only open-source cloud monitoring toolkit for public clouds and in particular for AWS.</p>
+<div class="section" id="sumo-architecture">
+<h2>Sumo: Architecture<a class="headerlink" href="#sumo-architecture" title="Permalink to this headline">¶</a></h2>
+<p>SuMo is composed of three main components/modules: cloudData, cloudKeeping and cloudForce. cloudData is responsible for collecting monitoring data, cloudKeeping contains a set of key performance indicators (KPI), while cloudForce
+incorporates a set of analytic and optimization algorithms.</p>
+<div class="figure align-center">
+<img alt="_images/sumo.png" src="_images/sumo.png" />
+<p class="caption">SuMo – Smart cloud Monitoring basic modules</p>
+</div>
+<ul class="simple">
+<li><strong>SuMo Modules</strong><ul>
+<li>cloudData : Collecting Monitoring Data  &#8211; (<a class="reference internal" href="cloudData.html"><em>API Reference</em></a>)</li>
+<li>cloudKeeping : Key performance Indicators &#8211; (<a class="reference internal" href="cloudKeeping.html"><em>API Reference</em></a>)</li>
+<li>cloudForce : Analytic and Optimization Algorithms  &#8211; (<a class="reference internal" href="cloudForce.html"><em>API Reference</em></a>)</li>
+<li>simCloudData: Create simulated instances &#8211; (<a class="reference internal" href="simCloudData.html"><em>API Reference</em></a>)</li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="additional-resources">
+<h2>Additional Resources<a class="headerlink" href="#additional-resources" title="Permalink to this headline">¶</a></h2>
+<div class="toctree-wrapper compound">
+</div>
+<div class="section" id="indices-and-tables">
+<h3>Indices and tables<a class="headerlink" href="#indices-and-tables" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><a class="reference internal" href="genindex.html"><em>Index</em></a></li>
+<li><a class="reference internal" href="py-modindex.html"><em>Module Index</em></a></li>
+<li><a class="reference internal" href="search.html"><em>Search Page</em></a></li>
+</ul>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="#">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">SuMo: Smart Cloud Monitoring toolkit</a><ul>
+<li><a class="reference internal" href="#sumo-architecture">Sumo: Architecture</a></li>
+<li><a class="reference internal" href="#additional-resources">Additional Resources</a><ul>
+<li><a class="reference internal" href="#indices-and-tables">Indices and tables</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  <h4>Next topic</h4>
+  <p class="topless"><a href="cloudData.html"
+                        title="next chapter">cloudData : Collecting Monitoring Data</a></p>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="cloudData.html" title="cloudData : Collecting Monitoring Data"
+             >next</a> |</li>
+        <li><a href="#">Sumo 1.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2013, Aristotelis Kretsis,Panagiotis Kokkinos.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+    </div>
+  </body>
+</html>

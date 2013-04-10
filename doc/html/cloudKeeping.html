@@ -1,0 +1,282 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>cloudKeeping : Key performance Indicators &mdash; Sumo 1.0 documentation</title>
+    
+    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '',
+        VERSION:     '1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="Sumo 1.0 documentation" href="index.html" />
+    <link rel="next" title="cloudForce : Analytic and Optimization Algorithms" href="cloudForce.html" />
+    <link rel="prev" title="cloudData : Collecting Monitoring Data" href="cloudData.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="cloudForce.html" title="cloudForce : Analytic and Optimization Algorithms"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="cloudData.html" title="cloudData : Collecting Monitoring Data"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">Sumo 1.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="cloudkeeping-key-performance-indicators">
+<h1>cloudKeeping : Key performance Indicators<a class="headerlink" href="#cloudkeeping-key-performance-indicators" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="module-sumo.cloudKeeping.cloudKeeping">
+<span id="module-cloudkeeping"></span><h2>Module cloudKeeping<a class="headerlink" href="#module-sumo.cloudKeeping.cloudKeeping" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="sumo.cloudKeeping.cloudKeeping.calculate_capacity_per_instance">
+<tt class="descclassname">sumo.cloudKeeping.cloudKeeping.</tt><tt class="descname">calculate_capacity_per_instance</tt><big>(</big><em>instances=None</em><big>)</big><a class="headerlink" href="#sumo.cloudKeeping.cloudKeeping.calculate_capacity_per_instance" title="Permalink to this definition">¶</a></dt>
+<dd><p>Computes the total instances&#8217; capacity per instance.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>instances</strong> (<em>list.</em>) &#8211; list of instances or &#8220;None&#8221; if all the user&#8217;s instances will be considered.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">dict &#8211; total capacity of instances per instance.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="sumo.cloudKeeping.cloudKeeping.calculate_capacity_per_instance_state">
+<tt class="descclassname">sumo.cloudKeeping.cloudKeeping.</tt><tt class="descname">calculate_capacity_per_instance_state</tt><big>(</big><em>instances=None</em><big>)</big><a class="headerlink" href="#sumo.cloudKeeping.cloudKeeping.calculate_capacity_per_instance_state" title="Permalink to this definition">¶</a></dt>
+<dd><p>Computes the total instances&#8217; capacity per instance state.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>instances</strong> (<em>list.</em>) &#8211; list of instances or &#8220;None&#8221; if all the user&#8217;s instances will be considered.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">dict &#8211; total capacity of instances per instance state.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="sumo.cloudKeeping.cloudKeeping.calculate_capacity_per_machine_type">
+<tt class="descclassname">sumo.cloudKeeping.cloudKeeping.</tt><tt class="descname">calculate_capacity_per_machine_type</tt><big>(</big><em>instances=None</em><big>)</big><a class="headerlink" href="#sumo.cloudKeeping.cloudKeeping.calculate_capacity_per_machine_type" title="Permalink to this definition">¶</a></dt>
+<dd><p>Computes the total instances&#8217; capacity per machine type.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>instances</strong> (<em>list.</em>) &#8211; list of instances or &#8220;None&#8221; if all the user&#8217;s instances will be considered.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">dict &#8211; total capacity of instances per machine type.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="sumo.cloudKeeping.cloudKeeping.calculate_capacity_per_os">
+<tt class="descclassname">sumo.cloudKeeping.cloudKeeping.</tt><tt class="descname">calculate_capacity_per_os</tt><big>(</big><em>instances=None</em><big>)</big><a class="headerlink" href="#sumo.cloudKeeping.cloudKeeping.calculate_capacity_per_os" title="Permalink to this definition">¶</a></dt>
+<dd><p>Computes the total instances&#8217; capacity per Operating System.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>instances</strong> (<em>list.</em>) &#8211; list of instances or &#8220;None&#8221; if all the user&#8217;s instances will be considered.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">dict &#8211; total capacity of instances per operating system.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="sumo.cloudKeeping.cloudKeeping.calculate_capacity_per_region">
+<tt class="descclassname">sumo.cloudKeeping.cloudKeeping.</tt><tt class="descname">calculate_capacity_per_region</tt><big>(</big><em>instances=None</em><big>)</big><a class="headerlink" href="#sumo.cloudKeeping.cloudKeeping.calculate_capacity_per_region" title="Permalink to this definition">¶</a></dt>
+<dd><p>Computes the total instances&#8217; capacity per region.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>instances</strong> (<em>list.</em>) &#8211; list of instances or &#8220;None&#8221; if all the user&#8217;s instances will be considered.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">dict &#8211; total capacity of instances per region.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="sumo.cloudKeeping.cloudKeeping.calculate_s3_storage_monthly_cost">
+<tt class="descclassname">sumo.cloudKeeping.cloudKeeping.</tt><tt class="descname">calculate_s3_storage_monthly_cost</tt><big>(</big><big>)</big><a class="headerlink" href="#sumo.cloudKeeping.cloudKeeping.calculate_s3_storage_monthly_cost" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculates S3 storage montly cost.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">int, int &#8211; total montly cost and size of S3 storage.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="sumo.cloudKeeping.cloudKeeping.get_instances_per_os">
+<tt class="descclassname">sumo.cloudKeeping.cloudKeeping.</tt><tt class="descname">get_instances_per_os</tt><big>(</big><em>format='raw'</em><big>)</big><a class="headerlink" href="#sumo.cloudKeeping.cloudKeeping.get_instances_per_os" title="Permalink to this definition">¶</a></dt>
+<dd><p>Computes the number of instances per Operating System.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>format</strong> (<em>string.</em>) &#8211; &#8220;raw&#8221; numbers or in &#8220;percentage&#8221;.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">dict &#8211; number or percentage of instances per Operating System.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="sumo.cloudKeeping.cloudKeeping.get_instances_per_region">
+<tt class="descclassname">sumo.cloudKeeping.cloudKeeping.</tt><tt class="descname">get_instances_per_region</tt><big>(</big><em>format='raw'</em><big>)</big><a class="headerlink" href="#sumo.cloudKeeping.cloudKeeping.get_instances_per_region" title="Permalink to this definition">¶</a></dt>
+<dd><p>Computes the number of instances per region.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>format</strong> (<em>string.</em>) &#8211; &#8220;raw&#8221; numbers or in &#8220;percentage&#8221;.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">dict &#8211; number or percentage of instances per region.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="sumo.cloudKeeping.cloudKeeping.get_instances_per_state">
+<tt class="descclassname">sumo.cloudKeeping.cloudKeeping.</tt><tt class="descname">get_instances_per_state</tt><big>(</big><em>format='raw'</em><big>)</big><a class="headerlink" href="#sumo.cloudKeeping.cloudKeeping.get_instances_per_state" title="Permalink to this definition">¶</a></dt>
+<dd><p>Computes the number of instances per instance state.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>format</strong> (<em>string.</em>) &#8211; &#8220;raw&#8221; numbers or in &#8220;percentage&#8221;.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">dict &#8211; number or percentage of instances per instance state.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="sumo.cloudKeeping.cloudKeeping.get_instances_per_type">
+<tt class="descclassname">sumo.cloudKeeping.cloudKeeping.</tt><tt class="descname">get_instances_per_type</tt><big>(</big><em>format='raw'</em><big>)</big><a class="headerlink" href="#sumo.cloudKeeping.cloudKeeping.get_instances_per_type" title="Permalink to this definition">¶</a></dt>
+<dd><p>Computes the number of instances per type.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>format</strong> (<em>string.</em>) &#8211; &#8220;raw&#8221; numbers or in &#8220;percentage&#8221;.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">dict &#8211; number or percentage of instances per type.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">cloudKeeping : Key performance Indicators</a><ul>
+<li><a class="reference internal" href="#module-sumo.cloudKeeping.cloudKeeping">Module cloudKeeping</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="cloudData.html"
+                        title="previous chapter">cloudData : Collecting Monitoring Data</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="cloudForce.html"
+                        title="next chapter">cloudForce : Analytic and Optimization Algorithms</a></p>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="cloudForce.html" title="cloudForce : Analytic and Optimization Algorithms"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="cloudData.html" title="cloudData : Collecting Monitoring Data"
+             >previous</a> |</li>
+        <li><a href="index.html">Sumo 1.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2013, Aristotelis Kretsis,Panagiotis Kokkinos.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+    </div>
+  </body>
+</html>

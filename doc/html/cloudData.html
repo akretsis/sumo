@@ -1,0 +1,602 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>cloudData : Collecting Monitoring Data &mdash; Sumo 1.0 documentation</title>
+    
+    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '',
+        VERSION:     '1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="Sumo 1.0 documentation" href="index.html" />
+    <link rel="next" title="cloudKeeping : Key performance Indicators" href="cloudKeeping.html" />
+    <link rel="prev" title="SuMo: Smart Cloud Monitoring toolkit" href="index.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="cloudKeeping.html" title="cloudKeeping : Key performance Indicators"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="index.html" title="SuMo: Smart Cloud Monitoring toolkit"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">Sumo 1.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="clouddata-collecting-monitoring-data">
+<h1>cloudData : Collecting Monitoring Data<a class="headerlink" href="#clouddata-collecting-monitoring-data" title="Permalink to this headline">¶</a></h1>
+<p>The clouData module contains all the necessary methods for retrieving a user’s current running instances, for getting the type and price of an instance, and its exact characteristics (e.g., EC2 Compute Units - ECU).</p>
+<div class="section" id="module-sumo.cloudData.cloudData">
+<span id="module-clouddata"></span><h2>Module cloudData<a class="headerlink" href="#module-sumo.cloudData.cloudData" title="Permalink to this headline">¶</a></h2>
+<span class="target" id="module-cloudData"></span><dl class="function">
+<dt id="sumo.cloudData.cloudData.aggregate_metric">
+<tt class="descclassname">sumo.cloudData.cloudData.</tt><tt class="descname">aggregate_metric</tt><big>(</big><em>metric_datapoints</em>, <em>operation='Average'</em><big>)</big><a class="headerlink" href="#sumo.cloudData.cloudData.aggregate_metric" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculates an aggregated value of received signal.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>metric_datapoints</strong> (<em>datapoints.</em>) &#8211; datapoints of the metric values.</li>
+<li><strong>operation</strong> (<em>str.</em>) &#8211; type of aggregation operation to performed.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">float &#8211; aggregated value.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="sumo.cloudData.cloudData.connect_to_aws_ec2">
+<tt class="descclassname">sumo.cloudData.cloudData.</tt><tt class="descname">connect_to_aws_ec2</tt><big>(</big><em>region=None</em><big>)</big><a class="headerlink" href="#sumo.cloudData.cloudData.connect_to_aws_ec2" title="Permalink to this definition">¶</a></dt>
+<dd><p>Connect to AWS EC2</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>region</strong> (<em>str.</em>) &#8211; The region to use.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">int &#8211; the return code.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">EC2Connection &#8211; a connection to the given region or to any region if no region is specified.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="sumo.cloudData.cloudData.datapoints_to_signal">
+<tt class="descclassname">sumo.cloudData.cloudData.</tt><tt class="descname">datapoints_to_signal</tt><big>(</big><em>metric_datapoints</em><big>)</big><a class="headerlink" href="#sumo.cloudData.cloudData.datapoints_to_signal" title="Permalink to this definition">¶</a></dt>
+<dd><p>Converts statistics datapoints to more easier handled signal.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>metric_datapoints</strong> (<em>datapoints.</em>) &#8211; datapoints of the metric values.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">list &#8211; a list containing all datapoint&#8217;s data.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="sumo.cloudData.cloudData.get_all_amis">
+<tt class="descclassname">sumo.cloudData.cloudData.</tt><tt class="descname">get_all_amis</tt><big>(</big><em>defined_filters=None</em><big>)</big><a class="headerlink" href="#sumo.cloudData.cloudData.get_all_amis" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get all AMIs and their related information.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>defined_filters</strong> (<em>dict.</em>) &#8211; Optional filters that can be used to limit the results returned (provided by boto).</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">list &#8211; list of dictionaries, where each dictionary contains info for each AMI.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="sumo.cloudData.cloudData.get_all_buckets">
+<tt class="descclassname">sumo.cloudData.cloudData.</tt><tt class="descname">get_all_buckets</tt><big>(</big><big>)</big><a class="headerlink" href="#sumo.cloudData.cloudData.get_all_buckets" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get all S3 buckets.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">list &#8211; list of dictionaries, where each dictionary contains info for each S3 bucket.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="sumo.cloudData.cloudData.get_all_bundle_tasks">
+<tt class="descclassname">sumo.cloudData.cloudData.</tt><tt class="descname">get_all_bundle_tasks</tt><big>(</big><em>defined_filters=None</em><big>)</big><a class="headerlink" href="#sumo.cloudData.cloudData.get_all_bundle_tasks" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get all Bundle Tasks.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>defined_filters</strong> (<em>dict.</em>) &#8211; Optional filters that can be used to limit the results returned (provided by boto).</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">list &#8211; list of dictionaries, where each dictionary contains info for each bundle task.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="sumo.cloudData.cloudData.get_all_elastic_ips">
+<tt class="descclassname">sumo.cloudData.cloudData.</tt><tt class="descname">get_all_elastic_ips</tt><big>(</big><em>defined_filters=None</em><big>)</big><a class="headerlink" href="#sumo.cloudData.cloudData.get_all_elastic_ips" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get all Elastic IP&#8217;s (EC2 or VPC).</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>defined_filters</strong> (<em>dict.</em>) &#8211; Optional filters that can be used to limit the results returned (provided by boto).</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">list &#8211; list of dictionaries, where each dictionary contains info for each elastic IP.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="sumo.cloudData.cloudData.get_all_instance_types">
+<tt class="descclassname">sumo.cloudData.cloudData.</tt><tt class="descname">get_all_instance_types</tt><big>(</big><big>)</big><a class="headerlink" href="#sumo.cloudData.cloudData.get_all_instance_types" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gets information for all different instance types, including type, os and region.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">list &#8211; list of all different instance types.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="sumo.cloudData.cloudData.get_all_instances">
+<tt class="descclassname">sumo.cloudData.cloudData.</tt><tt class="descname">get_all_instances</tt><big>(</big><big>)</big><a class="headerlink" href="#sumo.cloudData.cloudData.get_all_instances" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get all user&#8217;s instances (from all regions).</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">list &#8211; a list of instances.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="sumo.cloudData.cloudData.get_all_instances_metric">
+<tt class="descclassname">sumo.cloudData.cloudData.</tt><tt class="descname">get_all_instances_metric</tt><big>(</big><em>start</em>, <em>end</em>, <em>step_size</em>, <em>metric_name</em>, <em>instances</em><big>)</big><a class="headerlink" href="#sumo.cloudData.cloudData.get_all_instances_metric" title="Permalink to this definition">¶</a></dt>
+<dd><p>A wrapper function for getting the values of a metric for a set of instances instance over a time period.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>start</strong> (<em>datetime.</em>) &#8211; start time of observation.</li>
+<li><strong>end</strong> (<em>datetime.</em>) &#8211; end time of observation.</li>
+<li><strong>step_size</strong> (<em>int.</em>) &#8211; the length of each period</li>
+<li><strong>metric_name</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#str" title="(in Python v2.7)"><em>str</em></a>) &#8211; the metric&#8217;s name.</li>
+<li><strong>instance_id</strong> (<em>list.</em>) &#8211; list of instances.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">datapoints &#8211; datapoints of the metric values.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="sumo.cloudData.cloudData.get_all_key_pairs">
+<tt class="descclassname">sumo.cloudData.cloudData.</tt><tt class="descname">get_all_key_pairs</tt><big>(</big><em>defined_filters=None</em><big>)</big><a class="headerlink" href="#sumo.cloudData.cloudData.get_all_key_pairs" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get all Key Pairs.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>defined_filters</strong> (<em>dict.</em>) &#8211; Optional filters that can be used to limit the results returned (provided by boto).</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">list &#8211; list of dictionaries, where each dictionary contains info for each key pair.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="sumo.cloudData.cloudData.get_all_reserved_instances">
+<tt class="descclassname">sumo.cloudData.cloudData.</tt><tt class="descname">get_all_reserved_instances</tt><big>(</big><em>defined_filters=None</em><big>)</big><a class="headerlink" href="#sumo.cloudData.cloudData.get_all_reserved_instances" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get all reserved instances.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>defined_filters</strong> (<em>dict.</em>) &#8211; Optional filters that can be used to limit the results returned (provided by boto).</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">list &#8211; list of dictionaries, where each dictionary contains info for each reserved instance.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="sumo.cloudData.cloudData.get_all_security_groups">
+<tt class="descclassname">sumo.cloudData.cloudData.</tt><tt class="descname">get_all_security_groups</tt><big>(</big><em>defined_filters=None</em><big>)</big><a class="headerlink" href="#sumo.cloudData.cloudData.get_all_security_groups" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get all Security Groups.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>defined_filters</strong> (<em>dict.</em>) &#8211; Optional filters that can be used to limit the results returned (provided by boto).</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">list &#8211; list of dictionaries, where each dictionary contains info for each security group.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="sumo.cloudData.cloudData.get_all_snapshots">
+<tt class="descclassname">sumo.cloudData.cloudData.</tt><tt class="descname">get_all_snapshots</tt><big>(</big><em>defined_filters=None</em><big>)</big><a class="headerlink" href="#sumo.cloudData.cloudData.get_all_snapshots" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get Snapshots.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>defined_filters</strong> (<em>dict.</em>) &#8211; Optional filters that can be used to limit the results returned (provided by boto).</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">list &#8211; list of dictionaries, where each dictionary contains info for each snapshot.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="sumo.cloudData.cloudData.get_all_spot_instance_requests">
+<tt class="descclassname">sumo.cloudData.cloudData.</tt><tt class="descname">get_all_spot_instance_requests</tt><big>(</big><em>defined_filters=None</em><big>)</big><a class="headerlink" href="#sumo.cloudData.cloudData.get_all_spot_instance_requests" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get all spot requests.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>defined_filters</strong> (<em>dict.</em>) &#8211; Optional filters that can be used to limit the results returned (provided by boto).</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">list &#8211; list of dictionaries, where each dictionary contains info for each spot request.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="sumo.cloudData.cloudData.get_all_spot_instances">
+<tt class="descclassname">sumo.cloudData.cloudData.</tt><tt class="descname">get_all_spot_instances</tt><big>(</big><em>defined_filters=None</em><big>)</big><a class="headerlink" href="#sumo.cloudData.cloudData.get_all_spot_instances" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get all spot instances.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>defined_filters</strong> (<em>dict.</em>) &#8211; Optional filters that can be used to limit the results returned (provided by boto).</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">list &#8211; list of all spot instances.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="sumo.cloudData.cloudData.get_all_tags">
+<tt class="descclassname">sumo.cloudData.cloudData.</tt><tt class="descname">get_all_tags</tt><big>(</big><em>defined_filters=None</em><big>)</big><a class="headerlink" href="#sumo.cloudData.cloudData.get_all_tags" title="Permalink to this definition">¶</a></dt>
+<dd><p>Retrieve all the metadata tags from all regions.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>defined_filters</strong> (<em>dict.</em>) &#8211; Optional filters that can be used to limit the results returned (provided by boto).</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">list &#8211; list of dictionaries, where each dictionary contains info for the metadata tags for each region.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="sumo.cloudData.cloudData.get_all_volumes">
+<tt class="descclassname">sumo.cloudData.cloudData.</tt><tt class="descname">get_all_volumes</tt><big>(</big><em>defined_filters=None</em><big>)</big><a class="headerlink" href="#sumo.cloudData.cloudData.get_all_volumes" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get volumes
+:param defined_filters: Optional filters that can be used to limit the results returned (provided by boto). 
+:type defined_filters: dict.
+:returns: list &#8211; list of dictionaries, where each dictionary contains info for each volume</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="sumo.cloudData.cloudData.get_buckets_storage_pricing_info">
+<tt class="descclassname">sumo.cloudData.cloudData.</tt><tt class="descname">get_buckets_storage_pricing_info</tt><big>(</big><big>)</big><a class="headerlink" href="#sumo.cloudData.cloudData.get_buckets_storage_pricing_info" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns for for each S3 bucket its name, its size (in MB) for each storage class and its region</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">list &#8211; list of dictionaries, where each dictionary contains pricing info for each S3 bucket</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="sumo.cloudData.cloudData.get_capacity_per_machine_type">
+<tt class="descclassname">sumo.cloudData.cloudData.</tt><tt class="descname">get_capacity_per_machine_type</tt><big>(</big><big>)</big><a class="headerlink" href="#sumo.cloudData.cloudData.get_capacity_per_machine_type" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gets the capacity of each machine type (in EC2).</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">dict &#8211; the capacity of each machine type (in EC2).</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="sumo.cloudData.cloudData.get_ec2connection_instances">
+<tt class="descclassname">sumo.cloudData.cloudData.</tt><tt class="descname">get_ec2connection_instances</tt><big>(</big><em>ec2_conn</em>, <em>defined_filters=None</em><big>)</big><a class="headerlink" href="#sumo.cloudData.cloudData.get_ec2connection_instances" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get running instances based on the input EC2 connection</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>ec2_conn</strong> (<em>EC2Connection.</em>) &#8211; A EC2 connection to AWS object.</li>
+<li><strong>defined_filters</strong> (<em>dict.</em>) &#8211; Optional filters that can be used to limit the results returned (provided by boto).</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">list &#8211; a list of instances.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="sumo.cloudData.cloudData.get_instance_metric">
+<tt class="descclassname">sumo.cloudData.cloudData.</tt><tt class="descname">get_instance_metric</tt><big>(</big><em>start</em>, <em>end</em>, <em>step_size</em>, <em>metric_name</em>, <em>instance_id</em>, <em>region_name='us-west-1'</em><big>)</big><a class="headerlink" href="#sumo.cloudData.cloudData.get_instance_metric" title="Permalink to this definition">¶</a></dt>
+<dd><p>A wrapper function for getting the values of a metric for an instance over a time period.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>start</strong> (<em>datetime.</em>) &#8211; start time of observation.</li>
+<li><strong>end</strong> (<em>datetime.</em>) &#8211; end time of observation.</li>
+<li><strong>step_size</strong> (<em>int.</em>) &#8211; the length of each period</li>
+<li><strong>metric_name</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#str" title="(in Python v2.7)"><em>str</em></a>) &#8211; the metric&#8217;s name.</li>
+<li><strong>instance_id</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#int" title="(in Python v2.7)"><em>int</em></a>) &#8211; the instance observerd id.</li>
+<li><strong>region_name</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#str" title="(in Python v2.7)"><em>str</em></a>) &#8211; the region&#8217;s name.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">datapoints &#8211; datapoints of the metric values.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="sumo.cloudData.cloudData.get_instance_types_capacities">
+<tt class="descclassname">sumo.cloudData.cloudData.</tt><tt class="descname">get_instance_types_capacities</tt><big>(</big><big>)</big><a class="headerlink" href="#sumo.cloudData.cloudData.get_instance_types_capacities" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get all instance types computational capacities.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">list &#8211; list of all different instance types&#8217;s capacities.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="sumo.cloudData.cloudData.get_instance_types_costs">
+<tt class="descclassname">sumo.cloudData.cloudData.</tt><tt class="descname">get_instance_types_costs</tt><big>(</big><big>)</big><a class="headerlink" href="#sumo.cloudData.cloudData.get_instance_types_costs" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get all instance types costs.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">list &#8211; list of all different instance types&#8217;s costs.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="sumo.cloudData.cloudData.get_instance_types_count">
+<tt class="descclassname">sumo.cloudData.cloudData.</tt><tt class="descname">get_instance_types_count</tt><big>(</big><big>)</big><a class="headerlink" href="#sumo.cloudData.cloudData.get_instance_types_count" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gets the number of different instance types, considering type, os and region.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">int &#8211; number of different instance types.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="sumo.cloudData.cloudData.get_instances_capacity">
+<tt class="descclassname">sumo.cloudData.cloudData.</tt><tt class="descname">get_instances_capacity</tt><big>(</big><em>instances</em>, <em>filter=None</em><big>)</big><a class="headerlink" href="#sumo.cloudData.cloudData.get_instances_capacity" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gets the capacity of each instance (and the corresponding machine type) (in EC2).</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>instances</strong> (<em>list.</em>) &#8211; a list of instance types.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">list &#8211; list of cost for each instance type.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="sumo.cloudData.cloudData.get_instances_cost">
+<tt class="descclassname">sumo.cloudData.cloudData.</tt><tt class="descname">get_instances_cost</tt><big>(</big><em>instances</em><big>)</big><a class="headerlink" href="#sumo.cloudData.cloudData.get_instances_cost" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gets input instances&#8217; cost.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>instances</strong> (<em>list.</em>) &#8211; a list of instance types.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">list &#8211; list of cost for each instance type.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="sumo.cloudData.cloudData.get_instances_workload">
+<tt class="descclassname">sumo.cloudData.cloudData.</tt><tt class="descname">get_instances_workload</tt><big>(</big><em>instances</em>, <em>workload_datapoints_array</em>, <em>param='Average'</em><big>)</big><a class="headerlink" href="#sumo.cloudData.cloudData.get_instances_workload" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculates the workload percentage of the given instances, assuming that the given array contains the EC2 utilization of these instance 
+for a particular time period and that an aggregator parameter is used.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>instances</strong> (<em>list.</em>) &#8211; a list of instances.</li>
+<li><strong>workload_datapoints_array</strong> (<em>list.</em>) &#8211; a list of EC2 utilization datapoints for all input instances.</li>
+<li><strong>param</strong> (<em>str.</em>) &#8211; type of aggregation operation to performed.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">list &#8211; aggregated value.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="sumo.cloudData.cloudData.get_regional_instances">
+<tt class="descclassname">sumo.cloudData.cloudData.</tt><tt class="descname">get_regional_instances</tt><big>(</big><em>region_name=''</em><big>)</big><a class="headerlink" href="#sumo.cloudData.cloudData.get_regional_instances" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get instances from a specific region or else the default will be used.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>region</strong> (<em>str.</em>) &#8211; The region to use.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">list &#8211; a list of instances for a specific (or the default) region.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">cloudData : Collecting Monitoring Data</a><ul>
+<li><a class="reference internal" href="#module-sumo.cloudData.cloudData">Module cloudData</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="index.html"
+                        title="previous chapter">SuMo: Smart Cloud Monitoring toolkit</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="cloudKeeping.html"
+                        title="next chapter">cloudKeeping : Key performance Indicators</a></p>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="cloudKeeping.html" title="cloudKeeping : Key performance Indicators"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="index.html" title="SuMo: Smart Cloud Monitoring toolkit"
+             >previous</a> |</li>
+        <li><a href="index.html">Sumo 1.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2013, Aristotelis Kretsis,Panagiotis Kokkinos.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+    </div>
+  </body>
+</html>
