@@ -4,11 +4,16 @@ from sumo.core.constants import *
 from sumo.simCloudData.simVariables import *
 
 
-#######################
-# Returns a number of non real instances
-#######################
 def get_instances(instances_count):
 
+	"""Create a number of non real instances' data: region, type, state, os, id. 
+
+		:param instances_count: Number of instances.
+		:type instances_count: int.
+		:returns: list -- a list of non real instances' data.		
+
+	"""
+	
 	instances_list = list()
 	regions = []
 	states = []
@@ -66,11 +71,24 @@ def get_instances(instances_count):
 	return instances_list
 
 
-#######################
-# Returns non real aws instance statistics
-#######################
 def get_instance_metric(start, end, step_size, metric_name, usage_category, instance_id):
 
+	"""Create non real aws instance statistics.
+
+		:param start: start time of signal.
+		:type start: datetime.
+		:param end: end time of signal.
+		:type end: datetime.
+		:param metric: metric's name.
+		:type metric: string.
+		:param usage_category: usage category as defined in constants.py
+		:type usage_category: int.
+		:param instance_id: instance's id.
+		:type instance_id: int.
+		:returns: list -- a list of non real instances' data.		
+
+	"""
+	
 	datapoints = []     
 	stamp = start  
 	limits = USAGE_LIMITS[usage_category]
@@ -95,11 +113,18 @@ def get_instance_metric(start, end, step_size, metric_name, usage_category, inst
 	return datapoints
 
 
-#######################
-# Returns number of instances' os types with percentage of each type based on percent_array
-#######################
 def get_random_instance_os_types(number, percent_array):
 
+	"""Returns a number of instances' with specific OS type percentages.
+
+		:param number: number of instances.
+		:type number: int.
+		:param percent_array: list of percentages of each OS type.
+		:type percent_array: list.
+		:returns: list -- a list of instances.		
+
+	"""
+	
 	os_types = []
 	types = []
 
@@ -118,12 +143,19 @@ def get_random_instance_os_types(number, percent_array):
 
 	return types 
 
-
-#######################
-# Returns number of instances' regions with percentage of each region based on percent_array
-#######################
+	
 def get_random_instance_regions(number, percent_array):
 
+	"""Returns a number of instances' with specific region percentages.
+
+		:param number: number of instances.
+		:type number: int.
+		:param percent_array: list of percentages of each region.
+		:type percent_array: list.
+		:returns: list -- a list of instances.		
+
+	"""
+	
 	init_regions = []
 	regions = []
       
@@ -143,11 +175,18 @@ def get_random_instance_regions(number, percent_array):
 	return regions 
 
 
-#######################
-# Returns number of instances' types with percentage of each type based on percent_array
-#######################
 def get_random_instance_types(number, percent_array):
 
+	"""Returns a number of instances' with specific instance type percentages.
+
+		:param number: number of instances.
+		:type number: int.
+		:param percent_array: list of percentages of each instance type.
+		:type percent_array: list.
+		:returns: list -- a list of instances.		
+
+	"""
+	
 	init_types = []
 	types = []
       
@@ -167,11 +206,18 @@ def get_random_instance_types(number, percent_array):
 	return types 
 
 
-#######################
-# Returns number of instances' states with percentage of each state based on percent_array
-#######################
 def get_random_instance_states(number, percent_array):
 
+	"""Returns a number of instances' with specific instance state percentages.
+
+		:param number: number of instances.
+		:type number: int.
+		:param percent_array: list of percentages of each instance state.
+		:type percent_array: list.
+		:returns: list -- a list of instances.		
+
+	"""
+	
 	init_states = []
 	states = []
       

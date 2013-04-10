@@ -5,11 +5,26 @@ from sumo.core.constants import *
 from sumo.cloudData import s3_pricing
 
 
-#######################
-# Compute geographical instance statistics
-#######################
+"""
+.. module:: cloudKeeping
+  :synopsis: Contains a set of key performance indicators
+
+.. moduleauthor:: Panagiotis Kokkinos <kokkinop@ceid.upatras.gr> , Aristotelis Kretsis <akretsis@ceid.upatras.gr>
+
+
+"""
+
+
 def get_instances_per_region(format="raw"):
 
+	"""Computes the number of instances per region.
+
+		:param format: "raw" numbers or in "percentage".
+		:type format: string.
+		:returns: dict -- number or percentage of instances per region.		
+
+	"""
+	
 	# init main variable
 	instances_in_regions = {}
 	for region in EC2_REGIONS: 	
@@ -28,10 +43,15 @@ def get_instances_per_region(format="raw"):
 		return instances_in_regions
 				
 
-#######################
-# Compute instance type statistics
-#######################
 def get_instances_per_type(format="raw"):
+
+	"""Computes the number of instances per type.
+
+		:param format: "raw" numbers or in "percentage".
+		:type format: string.
+		:returns: dict -- number or percentage of instances per type.
+		
+	"""
 
 	# init main variable
 	instances_types = {}
@@ -51,10 +71,15 @@ def get_instances_per_type(format="raw"):
 		return instances_types
 
 
-#######################
-# Compute instance OS statistics
-#######################
 def get_instances_per_os(format="raw"):
+
+	"""Computes the number of instances per Operating System.
+
+		:param format: "raw" numbers or in "percentage".
+		:type format: string.
+		:returns: dict -- number or percentage of instances per Operating System.	
+
+	"""
 
 	#init main variable
 	instances_os = {}
@@ -74,10 +99,15 @@ def get_instances_per_os(format="raw"):
 		return instances_os
 	
 
-#######################
-# Compute instance state statistics
-#######################
 def get_instances_per_state(format="raw"):
+
+	"""Computes the number of instances per instance state.
+
+		:param format: "raw" numbers or in "percentage".
+		:type format: string.
+		:returns: dict -- number or percentage of instances per instance state.		
+
+	"""
 
 	#init main variable
         instances_state = {}
@@ -97,16 +127,15 @@ def get_instances_per_state(format="raw"):
                 return instances_state
 
 
-######################################################################################################################
-# 
-#  	Description: Calculate the .. for all existing instances  
-#
-# 	Arguments:
-# 	
-#	Return:
-#
-######################################################################################################################
 def calculate_capacity_per_os(instances=None):
+
+	"""Computes the total instances' capacity per Operating System.
+
+		:param instances: list of instances or "None" if all the user's instances will be considered.
+		:type instances: list.
+		:returns: dict -- total capacity of instances per operating system.
+
+	"""
 
 	capacity={}
 
@@ -119,16 +148,15 @@ def calculate_capacity_per_os(instances=None):
 	return capacity
 
 
-######################################################################################################################
-# 
-#  	Description: Calculate the ... for all 	 existing instances  
-#
-# 	Arguments:
-# 	
-#	Return:
-#
-######################################################################################################################
 def calculate_capacity_per_region(instances=None):
+
+	"""Computes the total instances' capacity per region.
+
+		:param instances: list of instances or "None" if all the user's instances will be considered.
+		:type instances: list.
+		:returns: dict -- total capacity of instances per region.
+
+	"""
 
 	capacity={}
 
@@ -141,16 +169,15 @@ def calculate_capacity_per_region(instances=None):
 	return capacity
 	
 	
-######################################################################################################################
-# 
-#  	Description: Calculate the ..... for all  existing instances  
-#
-# 	Arguments:
-# 	
-#	Return:
-#
-######################################################################################################################
 def calculate_capacity_per_machine_type(instances=None):
+
+	"""Computes the total instances' capacity per machine type.
+
+		:param instances: list of instances or "None" if all the user's instances will be considered.
+		:type instances: list.
+		:returns: dict -- total capacity of instances per machine type.
+
+	"""
 
 	capacity={}
 
@@ -162,16 +189,16 @@ def calculate_capacity_per_machine_type(instances=None):
 		
 	return capacity
 
-######################################################################################################################
-# 
-#  	Description: Calculate the ..... for all  existing instances  
-#
-# 	Arguments:
-# 	
-#	Return:
-#
-######################################################################################################################
+
 def calculate_capacity_per_instance_state(instances=None):
+
+	"""Computes the total instances' capacity per instance state.
+
+		:param instances: list of instances or "None" if all the user's instances will be considered.
+		:type instances: list.
+		:returns: dict -- total capacity of instances per instance state.
+
+	"""
 
 	capacity={}
 
@@ -183,16 +210,16 @@ def calculate_capacity_per_instance_state(instances=None):
 		
 	return capacity
 		
-######################################################################################################################
-# 
-#  	Description: Calculate the ..... for all  existing instances  
-#
-# 	Arguments:
-# 	
-#	Return:
-#
-######################################################################################################################
+
 def calculate_capacity_per_instance(instances=None):
+
+	"""Computes the total instances' capacity per instance.
+
+		:param instances: list of instances or "None" if all the user's instances will be considered.
+		:type instances: list.
+		:returns: dict -- total capacity of instances per instance.
+
+	"""
 
 	capacity=[]
 
@@ -212,6 +239,12 @@ def calculate_capacity_per_instance(instances=None):
 						
 
 def calculate_s3_storage_monthly_cost():
+
+	"""Calculates S3 storage montly cost.
+
+		:returns: int, int -- total montly cost and size of S3 storage.
+
+	"""
 
 	total_storage_size_GB = 0.0
 	total_cost = 0.0

@@ -7,6 +7,14 @@ from sumo.core import utils
 from sumo.core import Exceptions
 
 
+"""
+.. module:: cloudForce
+  :synopsis: Algorithms for optimizing the cost and the utilization of a set of instances
+
+.. moduleauthor:: Kokkinos Panagiotis <kokkinop@gmail.com>, Kretsis Aristotelis <aakretsis@gmail.com> , Poluzois Soumplis <polibios@gmail.com>
+
+"""
+
 try:
 	import cplex
 	from cplex.exceptions import CplexError	
@@ -15,23 +23,17 @@ except ImportError:
 	print tm.encode("utf-8")
 	sys.exit(1)
 
-"""
-.. module:: cloudForce
-  :synopsis: Algorithm for optimizing the cost and the utilization of a set of instances
 
-.. moduleauthor:: Kokkinos Panagiotis <kokkinop@gmail.com>, Kretsis Aristotelis <aakretsis@gmail.com> , Poluzois Soumplis <polibios@gmail.com>
+def get_instances_info(instances, statistics):
 
+	"""Calculates various information required by the algorithm.
 
-"""
-
-def get_instances_info(instances,statistics):
-
-	"""Calculates various information required by the algorithm
 		:param instances: instances.
 		:type instances: list.
-		:param statistics: statistical data for each instance,there is one by one mapping with first argument.
+		:param statistics: statistical data for each instance, there is one by one mapping with first argument.
 		:type statistics: list.
-		:returns: 			
+		:returns: int, list, list, list: number of instances, list of the instances' capacities, list of instances' costs, list of the instances's running time in hours.
+
 	"""
 
 	T = []
@@ -56,18 +58,20 @@ def get_instances_info(instances,statistics):
 
 		T.append((diff.days*24) + (diff.seconds/3600)+1)
 		
-	return D,capacity,cost,T
+	return D, capacity, cost, T
 
 
 
-def calculate_initial_state(instances,T):
+def calculate_initial_state(instances, T):
 
-	"""Calculates the initial values for the given instances about total cost, total capacity and instance types
+	"""Calculates the initial values for the given instances about total cost, total capacity and instance types.
+
 		:param instances: instances.
 		:type instances: list.
-		:param statistics: running time in hours for each instance , there is one by one mapping with first argument.
+		:param T: running time in hours for each instance, there is one by one mapping with first argument.
 		:type statistics: list.
-		:returns: total cost,total capacity and instance types.			
+
+		:returns: total cost, total capacity and instance types.			
 	"""
 
 	capacity = cloudData.get_instances_capacity(instances)	
@@ -86,21 +90,22 @@ def calculate_initial_state(instances,T):
 		
 	total_capacity = sum(capacity)
 
-	return cost,total_capacity,types
+	return cost, total_capacity, types
 
 
 def cost_utilization_optimization(instances, statistics, operation='Average', f=1, W=0.5):
 
-	"""Algorithm for optimizing the cost and the utilization of a set of instances
-		:param instances: Signal to use.
+	"""Algorithm for optimizing the cost and the utilization of a set of instances.
+
+		:param instances: instances.
 		:type instances: list.
-		:param statistics: Signal to use.
+		:param statistics: static and dynamic data regarding the given instances.
 		:type statistics: list.
-		:param f: Signal to use.
-		:type f: list.
-		:param W: Signal to use.
-		:type W: list.
-		:returns:  something.
+		:param f: parameter determining the targeted utilization (f=1 for 100%).
+		:type f: double.
+		:param W: importance given to the cost (W) in relation to the utilization (1-W), 0<=W<=1
+		:type W: double.
+		:returns:  
 		:raises: ExecutionError	
 	"""
 	
